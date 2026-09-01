@@ -1,9 +1,5 @@
 import * as vscode from "vscode";
-import {
-  componentStatusLabel,
-  formatUpdatedAt,
-  type StatusSummary,
-} from "./api";
+import { formatUpdatedAt, type StatusSummary } from "./api";
 
 const LABEL = "Claude";
 
@@ -68,15 +64,6 @@ function buildTooltip(summary: StatusSummary): string {
 
   if (summary.activeIncident) {
     lines.push(`Incident: ${summary.activeIncident}`);
-  }
-
-  if (summary.affected.length > 0) {
-    lines.push("");
-    for (const comp of summary.affected) {
-      lines.push(
-        `· ${comp.name} — ${componentStatusLabel(comp.status)}`
-      );
-    }
   }
 
   lines.push("");
